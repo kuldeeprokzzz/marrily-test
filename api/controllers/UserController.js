@@ -15,7 +15,7 @@ module.exports = {
        
         var users = [];
        
-       for (var i = 0; i < 500000; i++ ) {
+       for (var i = 0; i < 5; i++ ) {
             var data = {};
             data.names = names[Math.floor(Math.random() * names.length)]; 
             data.genders = genders[Math.floor(Math.random() * genders.length)];
