@@ -26,8 +26,13 @@ module.exports = {
 
        var j = 0;
        var cb = function(err, user){
-        j++;
-        User.addingData(users[j], cb);
+        if(err){
+          sails.log.error(err);
+        }
+        else{
+          j++;
+          User.addingData(users[j], cb);
+        }
        }
        
        User.addingData(users[j], cb);
