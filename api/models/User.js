@@ -44,7 +44,7 @@ addingData: function (data, callback) {
 
 
   pickup: function(data, cb){
-    User.find().limit(2).exec(function(err, allreadyMatchedUsers){
+    User.find().limit(1).exec(function(err, allreadyMatchedUsers){
       if(err){
         cb(err,null);
       }else{
