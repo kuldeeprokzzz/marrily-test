@@ -16,22 +16,22 @@ module.exports = {
         type : "string",
         required : true
        },
-       names: {
+       name: {
        	type :"string",
        	required: true
           },
 
-       genders : {
+       gender : {
        	type : "string",
        	required: true
        },   
 
-       professions: {
+       profession: {
        	type :"string",
        	required: true
        },
 
-       ageGroups: {
+       ageGroup: {
        	 type : "string",
        	 required: true
        }
