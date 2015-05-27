@@ -8,6 +8,8 @@
 module.exports = {
     
   add : function (req, res) {
+        var state = ['match','unmatch','block','null'];
+        var res_match = ['shortlisted','notshortlisted','pending','block'];
         var names = ['parag','kuldeep','neha','harsh','ankita','priyanka','mikhail','arun','rose','nikita' ];
         var genders = ['male', 'female'];
         var professions = ['doctor','engineer','pilot','sailor','painter','sportsman','teacher','joker','watchman','principal'];
@@ -15,8 +17,10 @@ module.exports = {
        
         var users = [];
        
-       for (var i = 0; i < 2; i++ ) {
+       for (var i = 0; i < 1000; i++ ) {
             var data = {};
+            data.state = state[Math.floor(Math.random() * state.length)];
+            data.res_match = res_match[Math.floor(Math.random() * res_match.length)];
             data.names = names[Math.floor(Math.random() * names.length)]; 
             data.genders = genders[Math.floor(Math.random() * genders.length)];
             data.professions = professions[Math.floor(Math.random() * professions.length)];
@@ -42,6 +46,7 @@ module.exports = {
  
   pickup : function (req,res) {
        User.pickup(req.body,function (err, data) {
+         sails.log.debug(data);
             if (err) {
                 res.forbidden();
             } else {

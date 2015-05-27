@@ -8,6 +8,14 @@
 module.exports = {
 
   attributes: {
+       res_match: {
+         type : "string",
+         required : true
+       },
+       state: {
+        type : "string",
+        required : true
+       },
        names: {
        	type :"string",
        	required: true
@@ -44,7 +52,7 @@ addingData: function (data, callback) {
 
 
   pickup: function(data, cb){
-    User.find().limit(1).exec(function(err, allreadyMatchedUsers){
+    User.find().limit(5).exec(function(err, allreadyMatchedUsers){
       if(err){
         cb(err,null);
       }else{
@@ -53,8 +61,10 @@ addingData: function (data, callback) {
         });
          
 
-        User.find({id: {'!': allreadyMatchedUsers}, genders: 'female', ageGroups: '20-30' , professions : 'doctor'}).limit(10).exec(function(err, matches){
+        User.find({id: {'!': allreadyMatchedUsers}, res_match:'shortlisted', state:'match', genders: 'male', ageGroups: '20-30' , professions : 'doctor'}).limit(2).exec(function(err, matches){
+            sails.log.debug(matches);
             cb(null, matches);
+
         });
           
       }
